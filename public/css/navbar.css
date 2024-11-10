@@ -46,12 +46,12 @@ body {
     transform: translateX(-50%); /* Ajusta la posición del logo al centro horizontalmente */
 }
 .logo img {
-    height: 70px; /* Ajusta el tamaño de la imagen según necesites */
+    height: 70px;
 }
 
 .nav-icons-cont {
     position: absolute;
-    right: 20px; /* Ajusta la posición a la derecha de la barra */
+    right: 20px;
     display: flex;
     gap: 20px;
     float: right;
@@ -63,7 +63,6 @@ body {
 
 /* USUARIO */
 .usuario {
-    /*border: 2px solid red;*/
     width: auto;
     display: flex;
     padding: 10px;
@@ -78,7 +77,6 @@ body {
     border-radius: 10px;
 }
 .usuario .info-usuario {
-    /*border: 2px solid black;*/
     width: 100%;
     display: flex;
     align-items: center;
@@ -87,7 +85,6 @@ body {
     overflow: hidden;
 }
 .usuario .nombre-rol{
-    /*border: 2px solid blue;*/
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -121,11 +118,21 @@ body {
 }
 .nav-icons-cont .iconos-nav {
     margin: 10px;
-    /* min-width: 30px; */
     width: 25px;
     height: auto;
     fill: var(--texto-menu);
     transition: fill 0.3s ease;
+}
+.navbar-second .iconos-nav {
+    margin: 10px;
+    width: 25px;
+    height: auto;
+    fill: var(--texto-submenu);
+    transition: fill 0.3s ease;
+}
+.navbar-second  a:hover .iconos-nav path,
+.navbar-second  .menu-item:hover .iconos-nav path {
+    fill: var(--texto-submenu-hover);
 }
 .nav-icons-cont div {
     padding: 10px;
@@ -171,12 +178,13 @@ body {
 
 /* Alineación y espacio de cada elemento del menú */
 .menu-item {
+    border: 1px solid red;
     position: relative;
-    padding: 10px;
+    padding: 10px 0px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px; /* Espacio entre el icono y el texto */
+    /* gap: 5px; Espacio entre el icono y el texto */
 }
 
 .menu-item a {
@@ -190,12 +198,12 @@ body {
 .menu-item img,
 .menu-item i {
     width: 25px;
-    margin: 0 5px;
+    margin: 0 0 0 5px;
 }
 
 .menu-item:hover {
     border-radius: 10px;
-    background-color: var(--background-hover);
+    /* background-color: var(--background-hover); */
     color: var(--texto-submenu-hover);
 }
 .menu-item a:hover{
@@ -240,13 +248,13 @@ body {
 }
 
 .dropdown li:hover {
-    background-color: var(--background-hover);
+    /* background-color: var(--background-hover); */
     color: var(--texto-submenu-hover);
 }
 
 
 .main-content {
-    padding: 140px 50px; /* Espacio para las barras de navegación */
+    padding: 150px 50px; /* Espacio para las barras de navegación */
     width: 100%;
 }
 
