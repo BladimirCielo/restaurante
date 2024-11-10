@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,7 +7,7 @@
     <meta name="author" content="Devcrud">
     <title>Los Almuerzos | Restaurante</title>
 
-    <link rel="shortcut icon" href="assets/imgs/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="landingpage-imgs/logo.png" type="image/x-icon">
    
     <!-- font icons -->
     <link rel="stylesheet" href="css/landingpage/vendors/themify-icons/css/themify-icons.css">
@@ -196,7 +196,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
 
     <!-- FoodHut js -->
-    <script src="assets/js/foodhut.js"></script>
+    <script src="js/landingpage/foodhut.js"></script>
 
 </body>
 </html>

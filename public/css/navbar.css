@@ -1,11 +1,12 @@
 :root {
     --texto-menu: rgb(255, 255, 255);
     --texto-submenu: rgb(109, 112, 128);
+    --texto-submenu-hover: #631e13;
     --texto-subtexto: rgb(73, 80, 87);
-    --texto-menu-hover: #631e13;
     --texto-encabezados: rgb(51, 51, 51);
-
+    
     --iconos-color: rgb(255, 255, 255);
+    --iconos-menu-hover: #481811;
     --fondo-contenedores: rgb(255, 255, 255);
     --background-hover: rgb(241, 241, 241);
 }
@@ -29,13 +30,14 @@ body {
     top: 0;
     width: 100%;
     height: 90px;
-    background-color: #631e13;
+    background-color: #38120c;
     color: var(--texto-menu);
     display: flex;
     justify-content: center; /* Centra el logo horizontalmente */
     align-items: center; /* Centra el logo verticalmente */
     padding: 0 20px;
     z-index: 10;
+    font-weight: bold;
 }
 
 .logo {
@@ -47,7 +49,7 @@ body {
     height: 70px; /* Ajusta el tamaño de la imagen según necesites */
 }
 
-.nav-icons {
+.nav-icons-cont {
     position: absolute;
     right: 20px; /* Ajusta la posición a la derecha de la barra */
     display: flex;
@@ -66,7 +68,7 @@ body {
     display: flex;
     padding: 10px;
     border-radius: 10px;
-    background-color: #802517;
+    background-color: #450d04;
     position: absolute;
     left: 10px;
 }
@@ -97,17 +99,49 @@ body {
 .usuario .rol {
     font-size: 13px;
 }
-.nav-icons {
+.nav-icons-cont {
     display: flex;
     align-items: center;
+    margin: 0;
 }
-.nav-icons img {
+.nav-icons-cont img {
     height: 25px;
     cursor: pointer;
 }
+.nav-icons-cont a {
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+    color:var(--texto-menu);
+    transition: background-color 0.2s ease;
+}
+.nav-icons-cont .iconos-nav {
+    margin: 10px;
+    /* min-width: 30px; */
+    width: 25px;
+    height: auto;
+    fill: var(--texto-menu);
+    transition: fill 0.3s ease;
+}
+.nav-icons-cont div {
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    transition: color 0.3s ease;
+}
+.nav-icons-cont a:hover {
+    /* color: var(--texto-menu-hover); */
+    background-color: var(--iconos-menu-hover);
+}
+/* .nav-icons-cont a:hover .iconos-nav path {
+    fill: var(--texto-menu-hover);
+} */
 
 /* Segunda barra de navegación */
-/* Barra de navegación secundaria */
 .navbar-second {
     position: fixed;
     top: 80px;
@@ -162,10 +196,10 @@ body {
 .menu-item:hover {
     border-radius: 10px;
     background-color: var(--background-hover);
-    color: var(--texto-menu-hover);
+    color: var(--texto-submenu-hover);
 }
 .menu-item a:hover{
-    color: var(--texto-menu-hover);
+    color: var(--texto-submenu-hover);
 }
 
 .ico {
@@ -207,7 +241,7 @@ body {
 
 .dropdown li:hover {
     background-color: var(--background-hover);
-    color: var(--texto-menu-hover);
+    color: var(--texto-submenu-hover);
 }
 
 

@@ -58,7 +58,6 @@
                             <td>Local</td>
                             <td>$1,300.00</td>
                         </tr>
-                        <!-- Add more seller rows as needed -->
                     </tbody>
                 </table>
             </div>
