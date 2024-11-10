@@ -8,8 +8,6 @@
 
     <!-- Estilos CSS -->   
     <link href="css/navbar.css" rel="stylesheet"/>
-    <!-- <link href="{!! asset('css/navbar.css') !!}" rel="stylesheet"/> -->
-    <!-- <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"/> -->
 
     <!-- Otros enlaces y estilos para las vistas individuales que mandan a llamar al menú de navegación -->
     @yield('estilos_adicionales')
