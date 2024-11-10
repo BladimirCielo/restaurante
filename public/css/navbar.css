@@ -1,0 +1,218 @@
+:root {
+    --texto-menu: rgb(255, 255, 255);
+    --texto-submenu: rgb(109, 112, 128);
+    --texto-subtexto: rgb(73, 80, 87);
+    --texto-menu-hover: #631e13;
+    --texto-encabezados: rgb(51, 51, 51);
+
+    --iconos-color: rgb(255, 255, 255);
+    --fondo-contenedores: rgb(255, 255, 255);
+    --background-hover: rgb(241, 241, 241);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f3f3f9;
+}
+
+/* Barra de navegación superior */
+.navbar-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #631e13;
+    color: var(--texto-menu);
+    display: flex;
+    justify-content: center; /* Centra el logo horizontalmente */
+    align-items: center; /* Centra el logo verticalmente */
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Ajusta la posición del logo al centro horizontalmente */
+}
+.logo img {
+    height: 70px; /* Ajusta el tamaño de la imagen según necesites */
+}
+
+.nav-icons {
+    position: absolute;
+    right: 20px; /* Ajusta la posición a la derecha de la barra */
+    display: flex;
+    gap: 20px;
+    float: right;
+}
+
+.icon{
+    cursor: pointer;
+}
+
+/* USUARIO */
+.usuario {
+    /*border: 2px solid red;*/
+    width: auto;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #802517;
+    position: absolute;
+    left: 10px;
+}
+.usuario img {
+    height: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+}
+.usuario .info-usuario {
+    /*border: 2px solid black;*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+.usuario .nombre-rol{
+    /*border: 2px solid blue;*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.usuario .nombre {
+    font-size: 17px;
+}
+.usuario .rol {
+    font-size: 13px;
+}
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+.nav-icons img {
+    height: 25px;
+    cursor: pointer;
+}
+
+/* Segunda barra de navegación */
+/* Barra de navegación secundaria */
+.navbar-second {
+    position: fixed;
+    top: 80px;
+    width: 100%;
+    height: 60px;
+    background-color: #efefef;
+    color: var(--texto-submenu);
+    padding: 10px 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    background-image: url("../archivos/textura.png");
+    background-repeat: repeat; /* Hace que la imagen se repita como un patrón */
+    background-size: auto; /* Mantiene el tamaño original de la imagen */
+}
+
+/* Menú */
+.menu {
+    padding-top: 10px;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding-left: 70px;
+}
+
+/* Alineación y espacio de cada elemento del menú */
+.menu-item {
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el icono y el texto */
+}
+
+.menu-item a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--texto-submenu);
+    transition: color 0.3s ease;
+}
+.menu-item img,
+.menu-item i {
+    width: 25px;
+    margin: 0 5px;
+}
+
+.menu-item:hover {
+    border-radius: 10px;
+    background-color: var(--background-hover);
+    color: var(--texto-menu-hover);
+}
+.menu-item a:hover{
+    color: var(--texto-menu-hover);
+}
+
+.ico {
+    font-style: normal;
+}
+
+.dropdown-icon {
+    margin-left: 5px;
+    font-size: 0.8em; /* Tamaño más pequeño para el icono de desplegable */
+}
+
+/* Submenús */
+.menu-item .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 5px 0;
+    min-width: 150px;
+    border-radius: 4px;
+    color: var(--texto-submenu);
+    background-image: url("../archivos/textura.png");
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+.menu-item:hover .dropdown { 
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.dropdown li {
+    padding: 5px 20px;
+    white-space: nowrap;
+    color: var(--texto-submenu);
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: var(--background-hover);
+    color: var(--texto-menu-hover);
+}
+
+
+.main-content {
+    padding: 140px 50px; /* Espacio para las barras de navegación */
+    width: 100%;
+}
+
