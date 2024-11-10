@@ -62,28 +62,42 @@
                 <img src="svg/insumos.svg" alt="">
                 <span>Insumos</span>
                 <i class="ico dropdown-icon">▼</i>
-                <a href="#">
-                    <ul class="dropdown">
+                <ul class="dropdown">
+                    <a href="#">
                         <li>Crear</li>
+                    </a>    
+                    <a href="#">
                         <li>Modificar</li>
+                    </a>    
+                    <a href="#">
                         <li>Eliminar</li>
+                    </a>    
+                    <a href="#">
                         <li>Consultar</li>
+                    </a>    
+                    <a href="#">
                         <li>Surtir</li>
-                    </ul>
-                </a>
+                    </a>    
+                </ul>                
             </li>
             <li class="menu-item">
                 <img src="svg/platillos.svg" alt="">
                 <span>Platillos</span>
                 <i class="ico dropdown-icon">▼</i>
-                <a href="#">
-                    <ul class="dropdown">
+                <ul class="dropdown">
+                    <a href="#">
                         <li>Crear</li>
+                    </a>    
+                    <a href="#">
                         <li>Modificar</li>
+                    </a>    
+                    <a href="#">
                         <li>Eliminar</li>
+                    </a>    
+                    <a href="#">
                         <li>Consultar</li>
-                    </ul>
-                </a>
+                    </a>    
+                </ul>
             </li>
             <li class="menu-item">
                 <a href="#">
@@ -101,12 +115,14 @@
                 <img src="svg/ventas.svg" alt="">
                 <span>Ventas</span>
                 <i class="ico dropdown-icon">▼</i>
-                <a href="#">
-                    <ul class="dropdown">
+                <ul class="dropdown">
+                    <a href="#">
                         <li>Realizar venta</li>
+                    </a>    
+                    <a href="#">
                         <li>Reportes</li>
-                    </ul>
-                </a>
+                    </a>
+                </ul>
             </li>
             <li class="menu-item">
                 <a href="#">
@@ -118,14 +134,20 @@
                 <img src="svg/empleados.svg" alt="">
                 <span>Empleados</span>
                 <i class="ico dropdown-icon">▼</i>
-                <a href="#">
-                    <ul class="dropdown">
+                <ul class="dropdown">
+                    <a href="#">
                         <li>Crear</li>
+                    </a>    
+                    <a href="#">
                         <li>Modificar</li>
+                    </a>    
+                    <a href="#">
                         <li>Eliminar</li>
+                    </a>    
+                    <a href="#">
                         <li>Consultar</li>
-                    </ul>
-                </a>
+                    </a>    
+                </ul>
             </li>
         </ul>
     </nav>
