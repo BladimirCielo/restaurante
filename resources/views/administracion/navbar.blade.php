@@ -9,6 +9,8 @@
     <!-- Estilos CSS -->   
     <link rel="stylesheet" href="css/navbar.css?=2">
 
+    <link rel="shortcut icon" href="archivos/favicon.ico" type="image/x-icon">
+
     <!-- Otros enlaces y estilos para las vistas individuales que mandan a llamar al menú de navegación -->
     @yield('estilos_adicionales')
 
