@@ -9,6 +9,14 @@
     --iconos-menu-hover: #481811;
     --fondo-contenedores: rgb(255, 255, 255);
     --background-hover: rgb(241, 241, 241);
+
+    --btn-color: #fff;
+    --btn-edit-bk: #f2ae43;
+    --btn-edit-bkhover: #cc9342;
+    --btn-del-bk: #d9534f;
+    --btn-del-bkhover: #b84743;
+    --btn-create-bk: #4582ec;
+    --btn-create-bkhover: #3b6fc9;
 }
 
 * {

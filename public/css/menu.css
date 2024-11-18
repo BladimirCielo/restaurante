@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#menu,
+#menusvg {
+    color: var(--texto-submenu-hover);
+    fill: var(--texto-submenu-hover);
+}
+
+.main-content { padding: 140px 0; }
+.cajapadre { padding: 20px 50px; }
+
+.cajapadre .boton-section{
+    display:flex;
+    flex-direction:row;
+    padding: 15px 0;
+}
+
+.cajapadre .boton-section .cont-btn-apartado {
+    margin-left: 15px;
+}
+
+.cajapadre button {
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-create {
+    background-color: var(--btn-create-bk);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.btn-create:hover {
+    background-color: var(--btn-create-bkhover);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.botones .btn-edit {
+    background-color: var(--btn-edit-bk);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.botones .btn-edit:hover {
+    background-color: var(--btn-edit-bkhover);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.botones .btn-delete {
+    background-color: var(--btn-del-bk);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.botones .btn-delete:hover {
+    background-color: var(--btn-del-bkhover);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+
+.header-photo {
+    width: 100%;
+    height: 100px;
+    white-space: nowrap;
+}
+
+.header-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.apartados-cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card-apartado {
+    background-color: white;
+    width: calc(50% - 10px);
+    height: 300px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-apartado h2 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.apartado {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header .botones {
+    margin-left: auto; /* Empuja los botones a la derecha */
+    display: flex;
+    gap: 5px; /* Espacio entre botones */
+}
+
+.descripcion {
+    padding: 0  10px;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    color: var(--texto-submenu-hover);
+    font-weight: bold;
+}
+
+table tbody tr:hover {
+    background-color: var(--background-hover);
+}
+
+table tbody td:last-child {
+    color: green;
+    font-weight: bold;
+}
+
+.tabla-scroll {
+    max-height: 230px;  /* Establece la altura máxima */
+    overflow-y: auto;
+}
+
+/* Estilo del scrollbar en navegadores basados en Webkit (Chrome, Safari, Edge) */
+.tabla-scroll::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar vertical */
+    height: 12px; /* Altura del scrollbar horizontal */
+}
+
+/* Estilo de la parte del scrollbar que se mueve (el "thumb") */
+.tabla-scroll::-webkit-scrollbar-thumb {
+    background-color: #afadad; /* Color del thumb */
+    border-radius: 6px; /* Bordes redondeados del thumb */
+    border: 2px solid #ddd; /* Borde alrededor del thumb */
+}
+
+/* Estilo de la parte del scrollbar que no se mueve (el track) */
+.tabla-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo del track */
+    border-radius: 6px; /* Bordes redondeados del track */
+}
+
+/* Opcional: Hover sobre el thumb */
+.tabla-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #888; /* Cambia el color del thumb al pasar el mouse */
+}
