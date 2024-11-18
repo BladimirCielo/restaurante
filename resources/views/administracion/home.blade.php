@@ -4,7 +4,7 @@
 
 @section('estilos_adicionales')
     <!-- <link href="{{ asset('css/home.css') }}" rel="stylesheet"> -->
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/home.css?=3" rel="stylesheet">
 @endsection
 
 @section('contenido')

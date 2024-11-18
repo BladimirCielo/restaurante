@@ -4,6 +4,11 @@
 .main-content > h2{
     margin-left: 30px;
 }
+#inicio,
+#iniciosvg {
+    color: var(--texto-submenu-hover);
+    fill: var(--texto-submenu-hover);
+}
 
 .nota{
     flex-wrap: wrap;
