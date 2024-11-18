@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Estilos CSS -->   
-    <link rel="stylesheet" href="css/navbar.css?=2">
+    <link rel="stylesheet" href="css/navbar.css?=3">
 
     <link rel="shortcut icon" href="archivos/favicon.ico" type="image/x-icon">
 
