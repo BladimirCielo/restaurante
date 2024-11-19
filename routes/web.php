@@ -14,5 +14,6 @@ Route::get('apartadoeditar/{id_apartado}',[panelcontroller::class,'apartadoedita
 
 // Landing Page
 Route::get('inicio',[landingpagecontroller::class,'inicio'])->name('inicio');
+Route::get('pedidos',[landingpagecontroller::class,'pedidos'])->name('pedidos');
 
 Route::get('consultar',[pedidoscontroller::class,'consultar'])->name('consultar'); 

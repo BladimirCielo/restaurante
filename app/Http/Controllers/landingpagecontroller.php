@@ -10,5 +10,8 @@ class landingpagecontroller extends controller {
     public function inicio() {
         return view ('landingpage.index');
     }
+    public function pedidos() {
+        return view ('landingpage.pedidosdomicilio');
+    }
 
 }

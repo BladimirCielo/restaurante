@@ -8,6 +8,8 @@
     <title>Los Almuerzos | Restaurante</title>
 
     <link rel="shortcut icon" href="landingpage-imgs/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/landingpage/pedidos.css">
    
     <!-- font icons -->
     <link rel="stylesheet" href="css/landingpage/vendors/themify-icons/css/themify-icons.css">
@@ -52,7 +54,7 @@
                     <a class="nav-link" href="#about">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4 reservar">Reservar</a>
+                    <a href="#reservar" class="btn btn-primary ml-xl-4 reservar">Reservar</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +64,7 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">Desde 1931</h1>
             <p class="display-4 mb-5">Para ti que buscas las experiencias más exclusivas en el tema de gastronomía gourmet, te traemos el más nuevo de nuestros restaurantes tradicionales.</p>
-            <a class="btn btn-lg btn-primary" href="#">Quiero reservar</a> <br>
+            <a class="btn btn-lg btn-primary" href="#reservar">Quiero reservar</a> <br>
             <a class="btn btn-lg btn-primary" href="#">Nuestra Carta</a>
         </div>
     </header>
@@ -181,6 +183,119 @@
         </div>
     </div>
 
+    <div class="cont-reservar" id="reservar">
+        <h1>Pedido en Línea</h1>
+        <!-- <div class="main-content"> -->
+            <section class="menu">
+                <h2>Menú</h2>
+
+                <!-- Categoría 1 -->
+                <div class="categoria">
+                    <h3>Tacos</h3>
+                    <div class="platillos scrolleable">
+                        <div class="platillo">
+                            <p class="nombre">Tacos al Pastor</p>
+                            <p class="precio">$15.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos al Pastor" data-precio="15">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Tacos de Barbacoa</p>
+                            <p class="precio">$18.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Tacos de Barbacoa</p>
+                            <p class="precio">$18.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Tacos de Barbacoa</p>
+                            <p class="precio">$18.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Tacos de Barbacoa</p>
+                            <p class="precio">$18.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Tacos de Barbacoa</p>
+                            <p class="precio">$18.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+                <!-- Categoría 2 -->
+                <div class="categoria">
+                    <h3>Antojitos</h3>
+                    <div class="platillos scrolleable">
+                        <div class="platillo">
+                            <p class="nombre">Enchiladas</p>
+                            <p class="precio">$20.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Enchiladas" data-precio="20">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Sopes</p>
+                            <p class="precio">$12.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Sopes" data-precio="12">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría 3 -->
+                <div class="categoria">
+                    <h3>Platillos Especiales</h3>
+                    <div class="platillos scrolleable">
+                        <div class="platillo">
+                            <p class="nombre">Pozole</p>
+                            <p class="precio">$25.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Pozole" data-precio="25">
+                        </div>
+                        <div class="platillo">
+                            <p class="nombre">Mole Poblano</p>
+                            <p class="precio">$30.00</p>
+                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Mole Poblano" data-precio="30">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="panel-lateral">
+                <h2>Tu Pedido</h2>
+                <ul id="pedidoList"></ul>
+                <div class="monto-total">
+                    <p>Total: $<span id="total">0.00</span></p>
+                </div>
+            </aside>
+        <!-- </div> -->
+
+        <section class="pedido">
+            <h2>Detalles del Pedido</h2>
+            <form id="pedidoForm">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <textarea id="direccion" placeholder="Tu dirección" required></textarea>
+                </div>
+                <div>
+                    <label for="metodoPago">Método de Pago:</label>
+                    <select id="metodoPago" required>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                </div>
+                <button type="submit">Pagar</button>
+            </form>
+        </section>
+    </div>
+
     
 	<!-- core  -->
     <script src="css/landingpage/vendors/jquery/jquery-3.4.1.js"></script>
@@ -197,6 +312,7 @@
 
     <!-- FoodHut js -->
     <script src="js/landingpage/foodhut.js"></script>
-
+    
+    <script src="js/landingpage/pedidos.js"></script>
 </body>
 </html>
