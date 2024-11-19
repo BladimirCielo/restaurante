@@ -9,7 +9,6 @@ Route::get('panelinicio',[panelcontroller::class,'panelinicio'])->name('panelini
 Route::get('panelmenu',[panelcontroller::class,'panelmenu'])->name('panelmenu');
 /* apartados */
 Route::POST('crearapartado',[panelcontroller::class,'crearapartado'])->name('crearapartado');
-// Route::get('mostrarplatillos',[panelcontroller::class,'mostrarplatillos'])->name('mostrarplatillos');
 Route::get('apartadoeditar/{id_apartado}',[panelcontroller::class,'apartadoeditar'])->name('apartadoeditar');
 
 // Landing Page

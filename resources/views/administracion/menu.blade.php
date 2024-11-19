@@ -46,8 +46,8 @@
                         <a class="btn-edit" href="{{ route('apartadoeditar', ['id_apartado' => $items[0]->id_apartado]) }}">
                             <input type="button" class="badge bg-editar" value="Cambiar nombre">
                         </a>
-                        <!-- <button class="btn-edit">
-                            Cambiar nombre
+                        <!-- <button class="btn-edit" id="btn-edit">
+                            Editar apartado
                         </button> -->
                         <button class="btn-delete">
                             Eliminar apartado
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <!-- Ventana Modal -->
+    <!-- CREAR APARTADO NUEVO -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span id="closeModalBtn" class="close">&times;</span>
@@ -98,13 +98,11 @@
                 @if($errors->first('nombre_ap'))
                     <p class="text-warning">{{ $errors->first('nombre_ap') }}</p>
                 @endif
-
                 <label for="desc">Descripción</label>
                 <input type="text" class="big" name="desc" placeholder="Ingresa la descripción" maxlength="100" value="{{ old('desc') }}" required>
                 @if($errors->first('desc'))
                     <p class="text-warning">{{ $errors->first('desc') }}</p>
                 @endif
-
                 <!-- Sección de selección de platillos -->
                 <div class="cont-platillos-add">
                     <!-- Agregar platillos -->
@@ -141,8 +139,6 @@
                             </table>
                         </div>
                     </div>
-
-                    <!-- Platillos seleccionados -->
                     <div class="cont-derecha">
                         <h3>Lista de platillos seleccionados</h3>
                         <div class="contenedor-platillos">
@@ -161,11 +157,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Campo oculto para enviar los IDs de los platillos seleccionados -->
                 <input type="hidden" name="platillos" id="platillosSeleccionados">
-
-                <!-- Botón de guardar -->
                 <div class="btn">
                     <input type="submit" class="btn-accept" name="guardar" value="Guardar">
                 </div>
@@ -176,7 +168,7 @@
     <!-- Enlace a JQery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     
-    <script src="js/menu/crearapartado.js?=2"></script>
+    <script src="js/menu/modales.js"></script>
 
     <script> 
         /* Almacenar los datos de los productos en un objeto JavaScript para actualizar la tabla de la venta */
@@ -247,7 +239,6 @@
             const campo = document.getElementById('platillosSeleccionados');
             campo.value = JSON.stringify(platillosSeleccionados);
         }
-        
     </script>
 
 @stop

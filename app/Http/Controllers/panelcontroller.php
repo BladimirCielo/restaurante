@@ -16,16 +16,6 @@ class panelcontroller extends controller {
         return view ('administracion.home');
     }
 
-    // MOSTRAR PLATILLOS 
-    // public function mostrarplatillos() {
-    //     $platillos = \DB::select("SELECT id_platillo, id_categoria, nombre_platillo, descripcion, precio_venta
-    //         FROM platillos
-    //         ORDER BY nombre_platillo ASC");
-
-    //     return view('administracion.menu')
-    //     ->with('platillos',$platillos);
-    // }
-
     // PLANEL MENÚ
     public function panelmenu() {
         $consulta = \DB::table('apartados')
@@ -79,7 +69,6 @@ class panelcontroller extends controller {
         Session::flash('mensaje', "El apartado $request->nombre_ap se ha guardado correctamente.");
         return redirect()->route('panelmenu');
     }
-    
 
     // EDITAR APARTADO EN MENÚ
     public function apartadoeditar($id_apartado) {
@@ -87,7 +76,8 @@ class panelcontroller extends controller {
             FROM apartados
             WHERE id_apartado = $id_apartado");
 
-        return view('administracion.menu')
-        ->with('infoapartado',$infoapartado);
+        return $infoapartado;
+        // return view('administracion.menu')
+        // ->with('infoapartado',$infoapartado);
     }
 }
