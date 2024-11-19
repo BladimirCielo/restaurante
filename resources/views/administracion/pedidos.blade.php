@@ -18,10 +18,11 @@
             <input type="date" name="fecha_fin" value="{{ request('fecha_fin') }}">
 
             <button type="submit" class="btn-buscar">Buscar</button>
+            <button type="button" class="btn-impr" onclick="imprimir()">Imprimir</button>
         </form>
 
         <!-- Tabla de Reporte de Ventas -->
-        <table>
+        <table id="tablaDatos">
             <thead>
                 <tr>
                     <th>No pedido</th>
@@ -32,7 +33,6 @@
                     <th>Total venta</th>
                     <th>Hora salida</th>
                     <th>Estado</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,13 +46,12 @@
                         <td>${{ number_format($venta->total_venta, 2) }}</td>
                         <td>{{ $venta->hora_salida }}</td>
                         <td>{{ $venta->estado }}</td>
-                        <td>
-                            <a href="#" target="_blank">Editar</a>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    <script src="js/imprimirpedidos.js"></script>
 
 @stop
