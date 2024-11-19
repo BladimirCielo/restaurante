@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#pedidos,
+#pedidossvg {
+    color: var(--texto-submenu-hover);
+    fill: var(--texto-submenu-hover);
+}
+
+.cont-principal {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-buscar {
+    border-radius: 20px;
+    padding: 10px;
+    width: 10em;
+    border: none;
+    cursor: pointer;
+    background-color: var(--btn-create-bk);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+.btn-buscar:hover {
+    background-color: var(--btn-create-bkhover);
+    color: var(--btn-color);
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ececec;
+    color: #000000;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: var(--background-hover);
+}
+
+td a {
+    background-color: var(--btn-edit-bk);
+    color: var(--btn-color);
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 7px;
+}
+
+td a:hover {
+    background-color: var(--btn-edit-bkhover);
+    color: var(--btn-color);
+}

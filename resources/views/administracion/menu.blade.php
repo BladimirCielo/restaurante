@@ -58,7 +58,7 @@
                     <span>{{ $items[0]->descripcion }}</span>
                 </div>
                 <div class="apartado cont">
-                    <div class="tabla-scroll">
+                    <div class="scroll">
                         <table>
                             <thead>
                                 <tr>
@@ -93,25 +93,28 @@
                 {{ csrf_field() }}
 
                 <!-- Campos para el apartado -->
-                <label for="nombre_ap">Nombre del Apartado</label>
-                <input type="text" class="big" name="nombre_ap" placeholder="Ingresa el nombre" maxlength="80" value="{{ old('nombre_ap') }}" required>
-                @if($errors->first('nombre_ap'))
-                    <p class="text-warning">{{ $errors->first('nombre_ap') }}</p>
-                @endif
-                <label for="desc">Descripción</label>
-                <input type="text" class="big" name="desc" placeholder="Ingresa la descripción" maxlength="100" value="{{ old('desc') }}" required>
-                @if($errors->first('desc'))
-                    <p class="text-warning">{{ $errors->first('desc') }}</p>
-                @endif
+                 <div class="modal-labels">
+                     <label for="nombre_ap">Nombre del Apartado</label>
+                     <input type="text" class="big" name="nombre_ap" placeholder="Ingresa el nombre" maxlength="80" value="{{ old('nombre_ap') }}" required>
+                     @if($errors->first('nombre_ap'))
+                         <p class="text-warning">{{ $errors->first('nombre_ap') }}</p>
+                     @endif
+                     <label for="desc">Descripción</label>
+                     <input type="text" class="big" name="desc" placeholder="Ingresa la descripción" maxlength="100" value="{{ old('desc') }}" required>
+                     @if($errors->first('desc'))
+                         <p class="text-warning">{{ $errors->first('desc') }}</p>
+                     @endif
+                 </div>
                 <!-- Sección de selección de platillos -->
                 <div class="cont-platillos-add">
                     <!-- Agregar platillos -->
                     <div class="cont-izquierda">
                         <h3>Agregar platillos</h3>
-                        <label for="">Buscar</label>
-                        <input type="text" id="input-busqueda" name="busqueda" placeholder="Buscar platillo..." maxlength="30">
+                        <div class="buscador">
+                            <input type="text" id="input-busqueda" name="busqueda" placeholder="Buscar platillo..." maxlength="30">
+                        </div>
                         
-                        <div class="tabla" id="tabla-resultados">
+                        <div class="tabla scroll" id="tabla-resultados">
                             <table border="1">
                                 <thead>
                                     <tr>

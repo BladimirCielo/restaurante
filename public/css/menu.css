@@ -27,7 +27,8 @@
     margin-left: 15px;
 }
 
-.cajapadre button {
+.cajapadre button,
+.botones a input {
     border-radius: 20px;
     padding: 10px;
     border: none;
@@ -44,18 +45,22 @@
     color: var(--btn-color);
     font-weight: bold;
 }
-.botones .btn-edit {
+.botones a input{
+    border: 1px solid red;
     background-color: var(--btn-edit-bk);
     color: var(--btn-color);
     font-weight: bold;
 }
-.botones .btn-edit:hover {
+.botones a input:hover {
     background-color: var(--btn-edit-bkhover);
     color: var(--btn-color);
     font-weight: bold;
 }
 .btn-delete {
     background-color: var(--btn-del-bk);
+    border-radius: 20px;
+    padding: 10px ;
+    border: none;
     color: var(--btn-color);
     font-weight: bold;
 }
@@ -87,7 +92,7 @@
 .card-apartado {
     background-color: white;
     width: calc(50% - 10px);
-    height: 300px;
+    height: auto;
     border-radius: 8px;
     box-sizing: border-box;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -103,6 +108,7 @@
 .apartado {
     box-sizing: border-box;
     padding: 10px;
+    overflow-y: auto;
 }
 
 .header {
@@ -147,32 +153,32 @@ table tbody td:last-child {
     font-weight: bold;
 }
 
-.tabla-scroll {
+.scroll {
     max-height: 230px;  /* Establece la altura máxima */
     overflow-y: auto;
 }
 
 /* Estilo del scrollbar en navegadores basados en Webkit (Chrome, Safari, Edge) */
-.tabla-scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar {
     width: 8px; /* Ancho del scrollbar vertical */
     height: 12px; /* Altura del scrollbar horizontal */
 }
 
 /* Estilo de la parte del scrollbar que se mueve (el "thumb") */
-.tabla-scroll::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb {
     background-color: #afadad; /* Color del thumb */
     border-radius: 6px; /* Bordes redondeados del thumb */
     border: 2px solid #ddd; /* Borde alrededor del thumb */
 }
 
 /* Estilo de la parte del scrollbar que no se mueve (el track) */
-.tabla-scroll::-webkit-scrollbar-track {
+.scroll::-webkit-scrollbar-track {
     background: #f1f1f1; /* Color de fondo del track */
     border-radius: 6px; /* Bordes redondeados del track */
 }
 
 /* Opcional: Hover sobre el thumb */
-.tabla-scroll::-webkit-scrollbar-thumb:hover {
+.scroll::-webkit-scrollbar-thumb:hover {
     background-color: #888; /* Cambia el color del thumb al pasar el mouse */
 }
 
@@ -186,6 +192,7 @@ table tbody td:last-child {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     z-index: 1000; /* Se coloca encima de otros elementos */
+    overflow-y: auto;
 }
 
 /* Contenido de la ventana modal */
@@ -197,6 +204,8 @@ table tbody td:last-child {
     width: 80%;
     height: auto;
     border-radius: 10px;
+    background-image: url("../archivos/textura.png");
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Botón para cerrar la ventana modal */
@@ -226,21 +235,31 @@ table tbody td:last-child {
     align-items: center;
 }
 
-form label {
-    display: block; /* Hacer que los labels se muestren como bloques */
-    width: 250px;
-    padding: 7px 7px 0 7px;
-    margin-bottom: 5px; /* Espaciado entre cada label e input */
+form .modal-labels{
+    display: flex; /* Activa Flexbox */
+    flex-direction: column; /* Organiza los elementos en una columna */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center;
 }
 
-form input {
+form .modal-labels label {
+    /* border: 1px solid green; */
+    align-self: flex-start;
+    display: block; /* Hacer que los labels se muestren como bloques */
+    width: autp;
+    padding: 7px 7px 0 7px;
+    margin-bottom: 5px; /* Espaciado entre cada label e input */
+    margin-left: 30%;
+}
+
+form .modal-labels input {
     border: 2px solid var(--color-input-border);
     display: block; /* Hacer que los inputs y selects se muestren como bloques */
     width: 500px;
     margin-bottom: 10px; /* Espaciado entre cada input y select */
     padding: 10px;
     border-radius: 10px;
-    background: var(--color-input-background);
+    background: #fff;
 }
 
 form  input[type="text"] {
@@ -251,7 +270,7 @@ form  input {
     margin-top: 15px;
 }
 form  .btn {
-    margin-top: 30px;
+    margin-top: 0;
     justify-content: center;
     display: flex;
 }
@@ -266,8 +285,12 @@ form  input {
 
 .btn-accept {
     background: var(--btn-accept-bk);
+    border-radius: 20px;
+    padding: 10px 5px;
+    border: none;
     color: var(--btn-color);
     cursor: pointer;
+    font-weight: bold;
 }
 .btn-accept:hover {
     background: var(--btn-accept-bkhover);
@@ -275,11 +298,11 @@ form  input {
 
 .cont-platillos-add {
     height: 100%;
-    width: 900px;
+    width: 1000px;
     display: flex;
     margin: 0 auto 0 auto;
+    padding: 15px;
     background-color: var(--background-color);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
@@ -288,17 +311,17 @@ form  input {
     overflow-y: auto;
     .buscador {
         margin: 10px;
-    
+        
         input[type="text"] {
-            border: 1px solid white;
+            border: 2px solid var(--color-input-border);
             width: 350px;
             height: 90%;
-            background: #f2f2f2;
+            background: #fff;
             padding: 10px;
             border-radius: 30px;
         }
         input[type="text"]:focus {
-            border: 2px solid #c6c6c6;
+            border: 2px solid #000;
             border-radius: 30px;
             outline: none;
         }
@@ -347,6 +370,9 @@ form  input {
             }
             tbody td{
                 border: 1px solid rgb(238, 238, 238);
+                text-align: center;
+                align-items: center;
+                justify-content: center;
             }
             .opciones {
                 border: 1;
@@ -380,16 +406,15 @@ form  input {
             .btn-op {
                 display: inline-block;
                 border: none;
-                width: 20px;
+                padding: 10px;
+                width: auto;
                 height: 20px;
-                border-radius: 50%;
-                text-align: center;
+                border-radius: 20px;
                 color: white;
+                font-weight: bold;
             }
-            .btn-op.plus {background-color: #4bbf73;}
-            .btn-op.minus {background: #d9534f;}
-            .btn-op.plus:hover {background-color: #40a262;}
-            .btn-op.minus:hover {background: #b84743;}
+            .btn-op.plus {background-color: var(--btn-create-bk);}
+            .btn-op.plus:hover {background-color: var(--btn-create-bkhover);}
         }
     }
 }
@@ -398,7 +423,7 @@ form  input {
     border-left: 3px solid #dbdbe0;
     display: flex;
     width: 40%;
-    padding: 5px;
+    padding: 0 0 0 15px;
     margin-right: 10px;
     flex-direction: column;
     transition: width .5s ease;

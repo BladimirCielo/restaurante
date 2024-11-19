@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\panelcontroller;
+use App\Http\Controllers\pedidoscontroller;
 use App\Http\Controllers\landingpagecontroller;
 
 // ADMINISTRACIÓN
@@ -13,3 +14,5 @@ Route::get('apartadoeditar/{id_apartado}',[panelcontroller::class,'apartadoedita
 
 // Landing Page
 Route::get('inicio',[landingpagecontroller::class,'inicio'])->name('inicio');
+
+Route::get('consultar',[pedidoscontroller::class,'consultar'])->name('consultar'); 
