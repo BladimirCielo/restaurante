@@ -54,7 +54,7 @@
                     <a class="nav-link" href="#about">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#reservar" class="btn btn-primary ml-xl-4 reservar">Reservar</a>
+                    <a href="#reservar" class="btn btn-primary ml-xl-4 reservar">Ordenar</a>
                 </li>
             </ul>
         </div>
@@ -64,8 +64,8 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">Desde 1931</h1>
             <p class="display-4 mb-5">Para ti que buscas las experiencias más exclusivas en el tema de gastronomía gourmet, te traemos el más nuevo de nuestros restaurantes tradicionales.</p>
-            <a class="btn btn-lg btn-primary" href="#reservar">Quiero reservar</a> <br>
-            <a class="btn btn-lg btn-primary" href="#">Nuestra Carta</a>
+            <a class="btn btn-lg btn-primary" href="#reservar">Pedir a domicilio</a> <br>
+            <a class="btn btn-lg btn-primary" href="#">Quiero reservar</a>
         </div>
     </header>
 
