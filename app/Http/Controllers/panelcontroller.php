@@ -69,15 +69,4 @@ class panelcontroller extends controller {
         Session::flash('mensaje', "El apartado $request->nombre_ap se ha guardado correctamente.");
         return redirect()->route('panelmenu');
     }
-
-    // EDITAR APARTADO EN MENÚ
-    public function apartadoeditar($id_apartado) {
-        $infoapartado =  \DB::select("SELECT id_apartado,id_menu,nombre_apartado,descripcion
-            FROM apartados
-            WHERE id_apartado = $id_apartado");
-
-        return $infoapartado;
-        // return view('administracion.menu')
-        // ->with('infoapartado',$infoapartado);
-    }
 }

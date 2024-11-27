@@ -30,6 +30,56 @@ class pedidoscontroller extends controller {
         $ventas = $ventas->get();
 
         // Devuelve la vista con los resultados
-        return view('administracion.pedidos')->with('ventas', $ventas);
+        return view('administracion.consultarpedidos')->with('ventas', $ventas);
+    }
+
+    public function entregar() {
+        $ventas = \DB::table('ventas')
+            ->where('tipo', 'Domicilio') // Filtrando por tipo 'Domicilio'
+            ->select('id_venta', 'fecha_venta', 'total_venta', 'nombre_cliente', 'direccion_envio', 'costo_envio', 'hora_salida', 'estado') // Seleccionando las columnas
+            ->orderBy('fecha_venta', 'desc'); // Ordenando por fecha_venta en orden descendente
+
+        $ventas = $ventas->get();
+        return view('administracion.entregarpedidos')->with('ventas', $ventas);
+    }
+
+    public function entregaPedido($id_venta) {
+        // Consulta la venta especificada por idventa
+        $infoPedido = \DB::select("SELECT id_venta, fecha_venta, nombre_cliente, hora_salida, estado
+            FROM ventas
+            WHERE id_venta = $id_venta");
+        
+        return view('administracion.entregapedido')
+        ->with('infoPedido', $infoPedido[0]);
+    }
+
+    public function guardarPedido(Request $request) {
+        // Validación de los datos del formulario
+        $validated = $request->validate([
+            'hora_salida' => [
+                'required',
+                'regex:/^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/',  // HH:MM:SS
+            ],
+            'estado' => [
+                'required',
+                'regex:/^(Enviado|Completado|Cancelado)$/',  // Solo "Completado" o "Cancelado"
+            ],
+        ]);
+
+        // Obtén los datos del formulario
+        $id_venta = $request->input('id_venta');
+        $hora_salida = $request->input('hora_salida');
+        $estado = $request->input('estado');
+
+        // Actualiza la venta en la base de datos
+        $venta = \DB::table('ventas')
+            ->where('id_venta', $id_venta)
+            ->update([
+                'hora_salida' => $hora_salida,
+                'estado' => $estado,
+            ]);
+
+        Session::flash('mensaje', "El pedido $request->id_venta se ha guardado correctamente.");
+        return redirect()->route('entregar');
     }
 }

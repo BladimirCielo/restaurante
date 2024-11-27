@@ -102,3 +102,41 @@ td a:hover {
     background-color: var(--btn-edit-bkhover);
     color: var(--btn-color);
 }
+
+.buscador {
+    margin: 10px;
+
+    span {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    input[type="text"] {
+        border: 2px solid var(--color-input-border);
+        width: 350px;
+        height: 90%;
+        background: #fff;
+        padding: 10px;
+        border-radius: 30px;
+        border: 2px solid #b4b4b4;
+    }
+    input[type="text"]:focus {
+        border: 2px solid #000;
+        border-radius: 30px;
+        outline: none;
+    }
+    .btn-buscar {
+        border: none;
+        height: 90%;
+        padding: 7px 20px;
+        margin: 0;
+        border-radius: 7px;
+        background-color: var(--color-blue);
+        color: var(--color-boton-texto);
+        display: none;
+    }
+    .btn-buscar:hover {
+        background-color: var(--color-boton-hover);
+        color: var(--color-boton-texto);
+    }
+}

@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Estilos CSS -->   
-    <link rel="stylesheet" href="css/navbar.css?=3">
-
-    <link rel="icon" href="{!! asset ('archivos/favicon.ico') !!}" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="css/navbar.css?=3"> -->
+    <link href="{{ asset('restaurante/public/css/navbar.css') }}" rel="stylesheet">
+    
+    <link rel="icon" href="{!! asset ('estaurante/public/archivos/favicon.ico') !!}" type="image/x-icon">
 
     <!-- Otros enlaces y estilos para las vistas individuales que mandan a llamar al menú de navegación -->
     @yield('estilos_adicionales')
@@ -23,10 +24,12 @@
     <!-- Barra de navegación superior -->
     <nav class="navbar-top">
         <div class="logo">
-            <img src="archivos/logo.png" alt="">
+            <!-- <img src="archivos/logo.png" alt=""> -->
+            <img src="{{ asset('restaurante/public/archivos/logo.png') }}" alt="">
         </div>
         <div class="usuario" id="img-user">
-            <img src="archivos/usuario.png" alt="">
+            <!-- <img src="archivos/usuario.png" alt=""> -->
+            <img src="{{ asset('restaurante/public/archivos/usuario.png') }}" alt="">
             <div class="info-usuario">
                 <div class="nombre-rol">
                     <span class="nombre">Bladimir Cielo Cuautle</span>

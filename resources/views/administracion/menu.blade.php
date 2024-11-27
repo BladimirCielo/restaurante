@@ -21,19 +21,19 @@
                 </button>
             </div>
             <div class="message">
-            @if (Session::has('mensaje'))
-                <div class="alert alert-dismissible alert-secondary">
-                    <button type="button" class="btn-close boton" data-bs-dismiss="alert"></button>
-                    <strong>{{ Session::get('mensaje') }}</strong>
+                @if (Session::has('mensaje'))
+                    <div class="alert alert-dismissible alert-secondary">
+                        <button type="button" class="btn-close boton" data-bs-dismiss="alert"></button>
+                        <strong>{{ Session::get('mensaje') }}</strong>
 
-                </div>
-            @endif
-            @if($errors->first('nombre_ap'))
-                <p class="text-warning">{{$errors->first('nombre_ap')}}</p>
-            @endif
-            @if($errors->first('desc'))
-                <p class="text-warning">{{$errors->first('desc')}}</p>
-            @endif
+                    </div>
+                @endif
+                @if($errors->first('nombre_ap'))
+                    <p class="text-warning">{{$errors->first('nombre_ap')}}</p>
+                @endif
+                @if($errors->first('desc'))
+                    <p class="text-warning">{{$errors->first('desc')}}</p>
+                @endif
             </div>
         </div>
 
@@ -42,17 +42,6 @@
             <div class="card-apartado">
                 <div class="apartado header">
                     <h2>{{ $items[0]->nombre_apartado }}</h2>
-                    <div class="botones">
-                        <a class="btn-edit" href="{{ route('apartadoeditar', ['id_apartado' => $items[0]->id_apartado]) }}">
-                            <input type="button" class="badge bg-editar" value="Cambiar nombre">
-                        </a>
-                        <!-- <button class="btn-edit" id="btn-edit">
-                            Editar apartado
-                        </button> -->
-                        <button class="btn-delete">
-                            Eliminar apartado
-                        </button>
-                    </div>
                 </div>
                 <div class="descripcion">
                     <span>{{ $items[0]->descripcion }}</span>
@@ -173,16 +162,7 @@
     
     <script src="js/menu/modales.js"></script>
 
-    <script> 
-        /* Almacenar los datos de los productos en un objeto JavaScript para actualizar la tabla de la venta */
-        var productos = [
-            @foreach($platillos as $p)
-                {
-                    nombre: "{{ $p->nombre_platillo }}",
-                    precio: {{ $p->precio_venta }},
-                },
-            @endforeach
-        ];
+    <script>
 
         /* Buscador en tiempo real en base a AJAX */
         $(document).ready(function(){
