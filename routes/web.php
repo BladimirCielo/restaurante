@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\panelcontroller;
 use App\Http\Controllers\pedidoscontroller;
 use App\Http\Controllers\landingpagecontroller;
+use App\Http\Controllers\logincontroller;
 
 // ADMINISTRACIÓN
 Route::get('panelinicio',[panelcontroller::class,'panelinicio'])->name('panelinicio');
@@ -11,10 +12,16 @@ Route::get('panelinicio',[panelcontroller::class,'panelinicio'])->name('panelini
 Route::get('panelmenu',[panelcontroller::class,'panelmenu'])->name('panelmenu');
 Route::POST('crearapartado',[panelcontroller::class,'crearapartado'])->name('crearapartado');
 // Landing Page
-Route::get('inicio',[landingpagecontroller::class,'inicio'])->name('inicio');
+Route::get('landing',[landingpagecontroller::class,'landing'])->name('landing');
 Route::get('pedidos',[landingpagecontroller::class,'pedidos'])->name('pedidos');
 // REGISTRAR Y RASTREAR PEDIDOS A DOMICILIO
 Route::get('consultar',[pedidoscontroller::class,'consultar'])->name('consultar'); 
 Route::get('entregar',[pedidoscontroller::class,'entregar'])->name('entregar'); 
 Route::get('entregaPedido/{id_venta}',[pedidoscontroller::class,'entregaPedido'])->name('entregaPedido');
 Route::POST('guardarPedido', [pedidoscontroller::class, 'guardarPedido'])->name('guardarPedido');
+
+/* LOGIN */
+Route::get('inicio',[logincontroller::class,'inicio'])->name('inicio');
+Route::get('login',[logincontroller::class,'login'])->name('login');
+Route::POST('validar',[logincontroller::class,'validar'])->name('validar');
+Route::get('cerrarsesion',[logincontroller::class,'cerrarsesion'])->name('cerrarsesion');

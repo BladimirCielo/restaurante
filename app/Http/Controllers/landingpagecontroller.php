@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class landingpagecontroller extends controller {
 
 
-    public function inicio() {
+    public function landing() {
         return view ('landingpage.index');
     }
     public function pedidos() {

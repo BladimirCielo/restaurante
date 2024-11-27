@@ -10,37 +10,49 @@ use Session;
 class pedidoscontroller extends controller {
 
     public function consultar(Request $request) {
-        // Obtén las fechas de inicio y fin del request
-        $fechaInicio = $request->input('fecha_inicio');
-        $fechaFin = $request->input('fecha_fin');
+        if(Session::get('sesionidu')) {
+            // Obtén las fechas de inicio y fin del request
+            $fechaInicio = $request->input('fecha_inicio');
+            $fechaFin = $request->input('fecha_fin');
 
-        // Base de la consulta
-        $ventas = \DB::table('ventas')
-            ->where('tipo', 'Domicilio') // Filtrando por tipo 'Domicilio'
-            ->select('id_venta', 'fecha_venta', 'total_venta', 'nombre_cliente', 'direccion_envio', 'costo_envio', 'hora_salida', 'estado') // Seleccionando las columnas
-            ->orderBy('fecha_venta', 'desc'); // Ordenando por fecha_venta en orden descendente
+            // Base de la consulta
+            $ventas = \DB::table('ventas')
+                ->where('tipo', 'Domicilio') // Filtrando por tipo 'Domicilio'
+                ->select('id_venta', 'fecha_venta', 'total_venta', 'nombre_cliente', 'direccion_envio', 'costo_envio', 'hora_salida', 'estado') // Seleccionando las columnas
+                ->orderBy('fecha_venta', 'desc'); // Ordenando por fecha_venta en orden descendente
 
-        // Aplica el filtro de fecha solo si ambas fechas están presentes
-        if ($fechaInicio && $fechaFin) {
-            // Verifica que las fechas están en el formato correcto antes de hacer la consulta
-            $ventas->whereBetween('fecha_venta', [$fechaInicio, $fechaFin]);
+            // Aplica el filtro de fecha solo si ambas fechas están presentes
+            if ($fechaInicio && $fechaFin) {
+                // Verifica que las fechas están en el formato correcto antes de hacer la consulta
+                $ventas->whereBetween('fecha_venta', [$fechaInicio, $fechaFin]);
+            }
+
+            // Ejecuta la consulta y obtiene los resultados
+            $ventas = $ventas->get();
+
+            // Devuelve la vista con los resultados
+            return view('administracion.consultarpedidos')->with('ventas', $ventas);
         }
-
-        // Ejecuta la consulta y obtiene los resultados
-        $ventas = $ventas->get();
-
-        // Devuelve la vista con los resultados
-        return view('administracion.consultarpedidos')->with('ventas', $ventas);
+        else {
+            Session::flash('mensaje', "Es necesario iniciar sesion");
+            return redirect()->route('login');   
+        }
     }
 
     public function entregar() {
-        $ventas = \DB::table('ventas')
-            ->where('tipo', 'Domicilio') // Filtrando por tipo 'Domicilio'
-            ->select('id_venta', 'fecha_venta', 'total_venta', 'nombre_cliente', 'direccion_envio', 'costo_envio', 'hora_salida', 'estado') // Seleccionando las columnas
-            ->orderBy('fecha_venta', 'desc'); // Ordenando por fecha_venta en orden descendente
+        if(Session::get('sesionidu')) {
+            $ventas = \DB::table('ventas')
+                ->where('tipo', 'Domicilio') // Filtrando por tipo 'Domicilio'
+                ->select('id_venta', 'fecha_venta', 'total_venta', 'nombre_cliente', 'direccion_envio', 'costo_envio', 'hora_salida', 'estado') // Seleccionando las columnas
+                ->orderBy('fecha_venta', 'desc'); // Ordenando por fecha_venta en orden descendente
 
-        $ventas = $ventas->get();
-        return view('administracion.entregarpedidos')->with('ventas', $ventas);
+            $ventas = $ventas->get();
+            return view('administracion.entregarpedidos')->with('ventas', $ventas);
+        }
+        else {
+            Session::flash('mensaje', "Es necesario iniciar sesion");
+            return redirect()->route('login');   
+        }
     }
 
     public function entregaPedido($id_venta) {

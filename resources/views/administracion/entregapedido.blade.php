@@ -20,7 +20,7 @@
             <input type="hidden" name="id_venta" value="{{ $infoPedido->id_venta }}">
 
             <div class="titulo">
-                <h1>Entregar pedido</h1>
+                <h1>Modificar pedido</h1>
             </div>
             <div class="message">
             @if (Session::has('mensaje'))

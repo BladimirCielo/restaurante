@@ -5,12 +5,6 @@ body {
     padding: 0;
 }
 
-#pedidos,
-#pedidossvg {
-    color: var(--texto-submenu-hover);
-    fill: var(--texto-submenu-hover);
-}
-
 .cont-principal {
     padding: 20px;
     background-color: #fff;

@@ -12,6 +12,11 @@
         .btn-entregar:hover {
             background:var(--btn-accept-bkhover);
         }
+        #entregas,
+        #pedidossvg {
+            color: var(--texto-submenu-hover);
+            fill: var(--texto-submenu-hover);
+        }
     </style>
 @endsection
 
@@ -51,7 +56,7 @@
                             <td>{{ $venta->estado }}</td>
                             <td>
                                 @if($venta->estado == 'Enviado')
-                                    <a href="{{ route('entregaPedido', $venta->id_venta) }}" class="btn-entregar">Entregar</a>
+                                    <a href="{{ route('entregaPedido', $venta->id_venta) }}" class="btn-entregar">Modificar</a>
                                 @endif
                             </td>
                         </tr>

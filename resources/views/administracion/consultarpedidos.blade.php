@@ -4,6 +4,13 @@
 
 @section('estilos_adicionales')
     <link href="css/consultapedidos.css" rel="stylesheet">
+    <style>
+        #pedidos,
+        #consultarsvg {
+            color: var(--texto-submenu-hover);
+            fill: var(--texto-submenu-hover);
+        }
+    </style>
 @endsection
 
 @section('contenido')    

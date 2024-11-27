@@ -13,32 +13,46 @@ class panelcontroller extends controller {
 
 
     public function panelinicio() {
-        return view ('administracion.home');
+        if(Session::get('sesionidu')) {
+            return view ('administracion.home');
+        }
+        else {
+            Session::flash('mensaje', "Es necesario iniciar sesion");
+            return redirect()->route('login');   
+        }
     }
 
     // PLANEL MENÚ
     public function panelmenu() {
-        $consulta = \DB::table('apartados')
-            ->leftJoin('platillos_apartados', 'apartados.id_apartado', '=', 'platillos_apartados.id_apartado')
-            ->leftJoin('platillos', 'platillos_apartados.id_platillo', '=', 'platillos.id_platillo')
-            ->select(
-                'apartados.id_apartado', 
-                'apartados.nombre_apartado', 
-                'apartados.descripcion', 
-                'platillos.id_platillo', 
-                'platillos.nombre_platillo', 
-                'platillos.precio_venta')
-        ->get();
-            
-        $apartados = $consulta->groupBy('id_apartado');
-    
-        $platillos = \DB::select("SELECT id_platillo, id_categoria, nombre_platillo, descripcion, precio_venta
-            FROM platillos
-            ORDER BY nombre_platillo ASC");
+        if(Session::get('sesionidu')) {
 
-        return view('administracion.menu')
-        ->with('apartados', $apartados)
-        ->with('platillos',$platillos);
+            $consulta = \DB::table('apartados')
+                ->leftJoin('platillos_apartados', 'apartados.id_apartado', '=', 'platillos_apartados.id_apartado')
+                ->leftJoin('platillos', 'platillos_apartados.id_platillo', '=', 'platillos.id_platillo')
+                ->select(
+                    'apartados.id_apartado', 
+                    'apartados.nombre_apartado', 
+                    'apartados.descripcion', 
+                    'platillos.id_platillo', 
+                    'platillos.nombre_platillo', 
+                    'platillos.precio_venta')
+            ->get();
+                
+            $apartados = $consulta->groupBy('id_apartado');
+        
+            $platillos = \DB::select("SELECT id_platillo, id_categoria, nombre_platillo, descripcion, precio_venta
+                FROM platillos
+                ORDER BY nombre_platillo ASC");
+
+            return view('administracion.menu')
+            ->with('apartados', $apartados)
+            ->with('platillos',$platillos);
+        }
+        else {
+            Session::flash('mensaje', "Es necesario iniciar sesion");
+            return redirect()->route('login');   
+        }
+        
     }
     
     // CREAR APARTADO EN MENÚ
