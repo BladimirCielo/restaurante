@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with FoodHut landing page.">
     <meta name="author" content="Devcrud">
@@ -21,6 +21,18 @@
 	
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="css/landingpage/templatemo-klassy-cafe.css">
+
+    <style>
+        .panel-lateral ul#pedidoList {
+    color: black; /* Cambia el color del texto dentro del ul a negro */
+    list-style-type: none; /* Opcional: elimina los bullets si no los necesitas */
+    margin: 0; /* Opcional: elimina márgenes */
+    padding: 0; /* Opcional: elimina padding */
+    font-family: Arial, sans-serif; /* Opcional: define una fuente */
+    font-size: 16px; /* Opcional: ajusta el tamaño de la letra */
+}
+
+    </style>
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -184,83 +196,26 @@
     </div>
 
     <div class="cont-reservar" id="reservar">
-        <h1>Pedido en Línea</h1>
+        <h1>Pedido en línea</h1>
         <!-- <div class="main-content"> -->
             <section class="menu">
                 <h2>Menú</h2>
 
-                <!-- Categoría 1 -->
                 <div class="categoria">
-                    <h3>Tacos</h3>
-                    <div class="platillos scrolleable">
-                        <div class="platillo">
-                            <p class="nombre">Tacos al Pastor</p>
-                            <p class="precio">$15.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos al Pastor" data-precio="15">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Tacos de Barbacoa</p>
-                            <p class="precio">$18.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Tacos de Barbacoa</p>
-                            <p class="precio">$18.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Tacos de Barbacoa</p>
-                            <p class="precio">$18.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Tacos de Barbacoa</p>
-                            <p class="precio">$18.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Tacos de Barbacoa</p>
-                            <p class="precio">$18.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Tacos de Barbacoa" data-precio="18">
-                        </div>
-                        
-                        
-                    </div>
-                </div>
+    @foreach ($apartados as $id_apartado => $items)
+    <h3>{{ $items[0]->nombre_apartado }}</h3>
+    <div class="platillos scrolleable">
+        @foreach ($items as $item)
+        <div class="platillo">
+            <p class="nombre">{{ $item->nombre_platillo }}</p>
+            <p class="precio">${{ number_format($item->precio_venta, 2) }}</p>
+            <input type="number" class="cantidad" data-nombre="{{ $item->nombre_platillo }}" data-precio="{{ $item->precio_venta }}" placeholder="Cantidad" min="0">
+        </div>
+        @endforeach
+    </div>
+    @endforeach
+</div>
 
-                <!-- Categoría 2 -->
-                <div class="categoria">
-                    <h3>Antojitos</h3>
-                    <div class="platillos scrolleable">
-                        <div class="platillo">
-                            <p class="nombre">Enchiladas</p>
-                            <p class="precio">$20.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Enchiladas" data-precio="20">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Sopes</p>
-                            <p class="precio">$12.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Sopes" data-precio="12">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 3 -->
-                <div class="categoria">
-                    <h3>Platillos Especiales</h3>
-                    <div class="platillos scrolleable">
-                        <div class="platillo">
-                            <p class="nombre">Pozole</p>
-                            <p class="precio">$25.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Pozole" data-precio="25">
-                        </div>
-                        <div class="platillo">
-                            <p class="nombre">Mole Poblano</p>
-                            <p class="precio">$30.00</p>
-                            <input type="number" class="cantidad" placeholder="Cantidad" min="0" data-nombre="Mole Poblano" data-precio="30">
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <aside class="panel-lateral">
@@ -274,14 +229,17 @@
 
         <section class="pedido">
             <h2>Detalles del Pedido</h2>
-            <form id="pedidoForm">
+            <form id="ventaForm" action="{{ route('registrarPedido') }}" method="POST">
+            @csrf
                 <div>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                    <input type="text" id="nombre_cliente" placeholder="Tu nombre" required>
                 </div>
                 <div>
                     <label for="direccion">Dirección:</label>
                     <textarea id="direccion" placeholder="Tu dirección" required></textarea>
+                    <!-- Total (se llena automáticamente) -->
+                    <input type="hidden" id="total_hidden" name="total_venta">
                 </div>
                 <div>
                     <label for="metodoPago">Método de Pago:</label>
@@ -291,10 +249,11 @@
                         <option value="transferencia">Transferencia</option>
                     </select>
                 </div>
-                <button type="submit">Pagar</button>
+                <button type="submit">Realizar Venta</button>
             </form>
         </section>
     </div>
+
 
     
 	<!-- core  -->
@@ -314,5 +273,58 @@
     <script src="js/landingpage/foodhut.js"></script>
     
     <script src="js/landingpage/pedidos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('.cantidad');
+            const pedidoList = document.getElementById('pedidoList');
+            const totalSpan = document.getElementById('total');
+
+            let pedido = {};
+
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    const nombre = input.dataset.nombre;
+                    const precio = parseFloat(input.dataset.precio);
+                    const cantidad = parseInt(input.value);
+
+                    if (cantidad > 0) {
+                        // Agregar o actualizar el platillo en el pedido
+                        pedido[nombre] = { cantidad, subtotal: cantidad * precio };
+                    } else {
+                        // Eliminar el platillo si la cantidad es 0
+                        delete pedido[nombre];
+                    }
+
+                    // Actualizar la lista y el total
+                    actualizarPedido();
+                });
+
+                const totalElement = document.getElementById('total');
+                const totalHiddenInput = document.getElementById('total_hidden');
+
+                // Actualizar el campo oculto con el valor actual del total
+                totalHiddenInput.value = parseFloat(totalElement.textContent);
+            });
+
+            function actualizarPedido() {
+                // Limpiar la lista
+                pedidoList.innerHTML = '';
+
+                // Mostrar los platillos en la lista
+                let total = 0;
+                for (const [nombre, datos] of Object.entries(pedido)) {
+                    const li = document.createElement('li');
+                    li.textContent = `${nombre} - ${datos.cantidad} x $${datos.subtotal.toFixed(2)}`;
+                    pedidoList.appendChild(li);
+                    total += datos.subtotal;
+                }
+
+                // Actualizar el monto total
+                totalSpan.textContent = total.toFixed(2);
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -9,6 +9,10 @@ use Session;
 
 class pedidoscontroller extends controller {
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que permite obtener un registro de las ventas registradas a domicilio
+    // y las muestra en la vista -->
     public function consultar(Request $request) {
         if(Session::get('sesionidu')) {
             // Obtén las fechas de inicio y fin del request
@@ -39,6 +43,9 @@ class pedidoscontroller extends controller {
         }
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que permite mostrar un registro de los pedidos a domicilio -->
     public function entregar() {
         if(Session::get('sesionidu')) {
             $ventas = \DB::table('ventas')
@@ -55,6 +62,9 @@ class pedidoscontroller extends controller {
         }
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción:Función que extrae los datos del pedido a modificar desde la base de datos  -->
     public function entregaPedido($id_venta) {
         // Consulta la venta especificada por idventa
         $infoPedido = \DB::select("SELECT id_venta, fecha_venta, nombre_cliente, hora_salida, estado
@@ -65,6 +75,10 @@ class pedidoscontroller extends controller {
         ->with('infoPedido', $infoPedido[0]);
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que inserta valores para el pedido a domicilio seleccionado
+    // desde un formulario en la vista -->
     public function guardarPedido(Request $request) {
         // Validación de los datos del formulario
         $validated = $request->validate([

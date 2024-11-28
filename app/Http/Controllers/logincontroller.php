@@ -9,6 +9,9 @@ use Session;
 
 class logincontroller extends Controller {
     
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que muestra la página principal del sistema si se encuentra una sesión. -->
     public function inicio() {
         if(Session::get('sesionidu'))
         {
@@ -20,10 +23,16 @@ class logincontroller extends Controller {
         }
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que muestra la vista del login. -->
     public function login() {
         return view ('login');
     }
     
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que valida las credenciales de acceso de sesiones. -->
     public function validar(Request $request) { 
         $nombre_usuario = $request->nombre_usuario;
         $contrasena = $request->contrasena;
@@ -53,6 +62,9 @@ class logincontroller extends Controller {
        
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que cierra la sesión activa. -->
     public function cerrarsesion() {
        Session::forget('sesionname');
        Session::forget('sesionidu');

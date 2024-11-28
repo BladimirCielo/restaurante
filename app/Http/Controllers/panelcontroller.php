@@ -12,6 +12,9 @@ use Session;
 class panelcontroller extends controller {
 
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que muestra el panel de inicio si hay una sesión iniciada -->
     public function panelinicio() {
         if(Session::get('sesionidu')) {
             return view ('administracion.home');
@@ -22,7 +25,10 @@ class panelcontroller extends controller {
         }
     }
 
-    // PLANEL MENÚ
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que hace una consulta de los apartados y sus platillos asignados
+    // para mostrarlos en la vista de menú -->
     public function panelmenu() {
         if(Session::get('sesionidu')) {
 
@@ -56,6 +62,9 @@ class panelcontroller extends controller {
     }
     
     // CREAR APARTADO EN MENÚ
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que permite crear nuevos apartados en el menú y aasignarle platillos -->
     public function crearapartado(Request $request) {
         $this->validate($request, [
             'nombre_ap' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,í,ó,é,ú,ü,ñ,Ñ]+$/',
