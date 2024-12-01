@@ -76,7 +76,7 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">Desde 1931</h1>
             <p class="display-4 mb-5">Para ti que buscas las experiencias más exclusivas en el tema de gastronomía gourmet, te traemos el más nuevo de nuestros restaurantes tradicionales.</p>
-            <a class="btn btn-lg btn-primary" href="#reservar">Pedir a domicilio</a> <br>
+            <a class="btn btn-lg btn-primary" href="#reservar">Ordenar a domicilio</a> <br>
             <a class="btn btn-lg btn-primary" href="#">Quiero reservar</a>
         </div>
     </header>
@@ -116,8 +116,63 @@
         </div>
     </section>
 
-    <!--  gallary Section  -->
-    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+    
+
+    <div class="cont-reservar text-center bg-dark text-light has-height-md middle-items wow fadeIn" id="reservar">
+        <h2 class="section-title">Pedido en línea</h2>
+        <!-- <div class="main-content"> -->
+            <section class="menu">
+                <div class="categoria">
+                    @foreach ($apartados as $id_apartado => $items)
+                    <h3 class="titulos">{{ $items[0]->nombre_apartado }}</h3>
+                    <div class="platillos scrolleable">
+                        @foreach ($items as $item)
+                        <div class="platillo">
+                            <p class="nombre">{{ $item->nombre_platillo }}</p>
+                            <p class="precio">${{ number_format($item->precio_venta, 2) }}</p>
+                            <input type="number" class="cantidad" data-nombre="{{ $item->nombre_platillo }}" data-precio="{{ $item->precio_venta }}" placeholder="0" min="0">
+                        </div>
+                        @endforeach
+                    </div>
+                    @endforeach
+                </div>
+
+            </section>
+
+            <aside class="panel-lateral">
+                <h2>Detalles del pedido</h2>
+                <ul id="pedidoList"></ul>
+                <div class="monto-total">
+                    <p>Total: $<span id="total">0.00</span></p>
+                </div>
+                <section class="pedido">
+                    <h2>Información de envío</h2>
+                    <form id="ventaForm" action="{{ route('registrarPedido') }}" method="POST">
+                    @csrf
+                        <div>
+                            <input type="text" id="nombre_cliente" name="nombre_cliente" placeholder="Ingresa tu nombre">
+                            @if($errors->first('nombre_cliente'))
+                                <p class="text-warning">{{$errors->first('nombre_cliente')}}</p>
+                            @endif
+                        </div>
+                        <div>
+                            <textarea id="direccion" placeholder="Ingresa tu dirección" name="direccion"></textarea>
+                            @if($errors->first('direccion'))
+                                <p class="text-warning">{{$errors->first('direccion')}}</p>
+                            @endif
+                            <!-- Total (se llena automáticamente) -->
+                            <input type="hidden" id="total_hidden" name="total_hidden">
+                        </div>
+                        <button type="submit">Realizar pedido</button>
+                    </form>
+                </section>
+            </aside>
+        <!-- </div> -->
+
+    </div>
+
+<!--  gallary Section  -->
+<div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
         <h2 class="section-title">Galería</h2>
     </div>
     <div class="gallary row">
@@ -194,67 +249,6 @@
             </a>
         </div>
     </div>
-
-    <div class="cont-reservar" id="reservar">
-        <h1>Pedido en línea</h1>
-        <!-- <div class="main-content"> -->
-            <section class="menu">
-                <h2>Menú</h2>
-
-                <div class="categoria">
-    @foreach ($apartados as $id_apartado => $items)
-    <h3>{{ $items[0]->nombre_apartado }}</h3>
-    <div class="platillos scrolleable">
-        @foreach ($items as $item)
-        <div class="platillo">
-            <p class="nombre">{{ $item->nombre_platillo }}</p>
-            <p class="precio">${{ number_format($item->precio_venta, 2) }}</p>
-            <input type="number" class="cantidad" data-nombre="{{ $item->nombre_platillo }}" data-precio="{{ $item->precio_venta }}" placeholder="Cantidad" min="0">
-        </div>
-        @endforeach
-    </div>
-    @endforeach
-</div>
-
-            </section>
-
-            <aside class="panel-lateral">
-                <h2>Tu Pedido</h2>
-                <ul id="pedidoList"></ul>
-                <div class="monto-total">
-                    <p>Total: $<span id="total">0.00</span></p>
-                </div>
-            </aside>
-        <!-- </div> -->
-
-        <section class="pedido">
-            <h2>Detalles del Pedido</h2>
-            <form id="ventaForm" action="{{ route('registrarPedido') }}" method="POST">
-            @csrf
-                <div>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre_cliente" placeholder="Tu nombre" required>
-                </div>
-                <div>
-                    <label for="direccion">Dirección:</label>
-                    <textarea id="direccion" placeholder="Tu dirección" required></textarea>
-                    <!-- Total (se llena automáticamente) -->
-                    <input type="hidden" id="total_hidden" name="total_venta">
-                </div>
-                <div>
-                    <label for="metodoPago">Método de Pago:</label>
-                    <select id="metodoPago" required>
-                        <option value="efectivo">Efectivo</option>
-                        <option value="tarjeta">Tarjeta</option>
-                        <option value="transferencia">Transferencia</option>
-                    </select>
-                </div>
-                <button type="submit">Realizar Venta</button>
-            </form>
-        </section>
-    </div>
-
-
     
 	<!-- core  -->
     <script src="css/landingpage/vendors/jquery/jquery-3.4.1.js"></script>
@@ -308,21 +302,26 @@
             });
 
             function actualizarPedido() {
-                // Limpiar la lista
-                pedidoList.innerHTML = '';
+    // Limpiar la lista
+    pedidoList.innerHTML = '';
 
-                // Mostrar los platillos en la lista
-                let total = 0;
-                for (const [nombre, datos] of Object.entries(pedido)) {
-                    const li = document.createElement('li');
-                    li.textContent = `${nombre} - ${datos.cantidad} x $${datos.subtotal.toFixed(2)}`;
-                    pedidoList.appendChild(li);
-                    total += datos.subtotal;
-                }
+    // Mostrar los platillos en la lista
+    let total = 0;
+    for (const [nombre, datos] of Object.entries(pedido)) {
+        const li = document.createElement('li');
+        li.textContent = `${nombre} - ${datos.cantidad} x $${datos.subtotal.toFixed(2)}`;
+        pedidoList.appendChild(li);
+        total += datos.subtotal;
+    }
 
-                // Actualizar el monto total
-                totalSpan.textContent = total.toFixed(2);
-            }
+    // Actualizar el monto total
+    totalSpan.textContent = total.toFixed(2);
+
+    // Actualizar el campo oculto
+    const totalHiddenInput = document.getElementById('total_hidden');
+    totalHiddenInput.value = total.toFixed(2);
+}
+
         });
     </script>
 

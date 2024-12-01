@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class landingpagecontroller extends controller {
 
@@ -39,27 +40,34 @@ class landingpagecontroller extends controller {
     {
         // Validar los datos del formulario
         $validated = $request->validate([
-            'nombre_cliente' => 'required|string|max:255',
-            'direccion' => 'required|string|max:500',
-            'total_venta' => 'required|numeric|min:0',
+            'nombre_cliente' => 'required|max:150|regex:/^[A-Z][A-Z,a-z, ,á,í,ó,é,ú,ü,ñ,Ñ]+$/',
+            'direccion' => 'required|regex:/^[0-9,A-Z][A-Z,a-z, ,á,í,ó,é,ú,ü,ñ,Ñ,#,.,0-9,\,]+$/'
         ]);
 
-        // Insertar la venta en la base de datos
-        DB::table('ventas')->insert([
-            'id_empleado' => 1, // Cambiar según corresponda
-            'id_metpag' => 1, // Cambiar según corresponda
-            'fecha_venta' => Carbon::now()->toDateString(),
-            'total_venta' => $validated['total_venta'],
-            'tipo' => 'Domicilio', // Cambiar si es necesario
-            'nombre_cliente' => $validated['nombre_cliente'],
-            'direccion_envio' => $validated['direccion'],
-            'costo_envio' => null, // Cambiar según corresponda
-            'hora_salida' => null, // Cambiar si es necesario
-            'estado' => 'Pendiente', // Cambiar según corresponda
-        ]);
+        // Obtén los datos del formulario
+        $nombre_cliente = $request->input('nombre_cliente');
+        $direccion = $request->input('direccion');
+        $total = $request->input('total_hidden');
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->back()->with('success', 'Venta registrada exitosamente.');
+        // Realizar inserción en la base de datos
+        $insertapedido = DB::insert(
+            "INSERT INTO ventas (id_empleado, id_metpag, fecha_venta, total_venta, tipo, nombre_cliente, direccion_envio, costo_envio, hora_salida, estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [
+                7, // id_empleado
+                null, // id_metpag
+                date('Y-m-d'), // fecha_venta (fecha actual en formato DATE)
+                $total, // total_venta
+                'Domicilio', // tipo
+                $nombre_cliente, // nombre_cliente
+                $direccion, // direccion_envio
+                null, // costo_envio
+                null, // hora_salida
+                'Pendiente', // estado
+            ]
+        );
+
+        return redirect()->route('landing');
     }
 
 }

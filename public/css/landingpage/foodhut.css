@@ -11204,11 +11204,23 @@ pre {
 .header {
   height: 100vh;
   max-height: 900px;
-  background: url("../../landingpage-imgs/main.jpg") no-repeat center center fixed;
+  background: url("../../landingpage-imgs/header-main.jpg") no-repeat center center fixed;
   /* background-image: url("../archivos/textura.png"); */
   background-size: cover;
   min-height: 750px;
   color: #dcd0c9;
+  h1 {
+    color: #dcd0c9;
+  }
+}
+
+.section-title {
+  color: #dcd0c9;
+
+}
+
+.titulos {
+color: #fb6052;
 }
 
 .header .overlay {

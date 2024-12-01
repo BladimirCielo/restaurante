@@ -55,7 +55,7 @@
                             <td>{{ $venta->hora_salida }}</td>
                             <td>{{ $venta->estado }}</td>
                             <td>
-                                @if($venta->estado == 'Enviado')
+                                @if($venta->estado == 'Enviado' || $venta->estado == 'Pendiente')
                                     <a href="{{ route('entregaPedido', $venta->id_venta) }}" class="btn-entregar">Modificar</a>
                                 @endif
                             </td>
