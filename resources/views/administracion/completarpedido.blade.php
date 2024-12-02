@@ -3,6 +3,9 @@
 @section('title', 'Completa tu pedido | Los Almuerzos')
 
 @section('estilos_adicionales')
+<!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista para modificar el costo de envío, hora de salida y estado del pedido a domicilio para el rol del repartidor. -->
 
     <link href="{{ asset('restaurante/public/css/consultapedidos.css') }}" rel="stylesheet">
 

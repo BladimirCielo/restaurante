@@ -3,6 +3,9 @@
 @section('title', 'Entregar pedidos | Los Almuerzos')
 
 @section('estilos_adicionales')
+<!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista para la consulta de pedidos a domicilio para el rol de repartidor. -->
     <link href="css/consultapedidos.css" rel="stylesheet">
 
     <style>

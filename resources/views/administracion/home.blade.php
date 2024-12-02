@@ -9,6 +9,10 @@
 
 @section('contenido')
 
+<!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista de bienvenida para el sistema de administración del restaurante. -->
+
     <!-- Cuerpo de la página -->
     <div class="nota" id="nota">
         <h2>¡Bienvenido!</h2>

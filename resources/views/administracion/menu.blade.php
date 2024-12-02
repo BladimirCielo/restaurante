@@ -8,6 +8,10 @@
 
 @section('contenido')
 
+<!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista para crear nuevos apartados en el menú para el rol de jefe de cocina. -->
+
     <div class="header-photo">
         <img src="img/menu.jpg" alt="">
     </div>

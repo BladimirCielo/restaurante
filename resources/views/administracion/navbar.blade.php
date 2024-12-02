@@ -2,6 +2,10 @@
 <html lang="es">
 <head>
 
+<!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista del menú de navegación que será retutilizado en cada vista del sistema de administración. -->
+  
     <!-- Características de HTML -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -6,6 +6,10 @@ use App\Http\Controllers\pedidoscontroller;
 use App\Http\Controllers\landingpagecontroller;
 use App\Http\Controllers\logincontroller;
 
+//   Autor: Jose Bladimir Cielo Cuautle
+//   Fecha: Noviembre 27, 2024
+//   Descripción: Rutas que manejan los controladores y vistas del sistema
+
 /* LOGIN */
 Route::get('inicio',[logincontroller::class,'inicio'])->name('inicio');
 Route::get('login',[logincontroller::class,'login'])->name('login');

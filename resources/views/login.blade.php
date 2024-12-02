@@ -2,6 +2,9 @@
 <!doctype html>
 <html lang="es">
   <head>
+  <!-- Autor: Jose Bladimir Cielo Cuautle
+  Fecha: Noviembre 27, 2024
+  Descripción: Vista paraa el logeo al sistema de administración del restaurante. -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +20,7 @@
 
     <link rel="icon" href="{!! asset ('restaurante/public/archivos/favicon.ico') !!}" type="image/x-icon">
 
-    <title>Inicio de sesión</title>
+    <title>Inicio de sesión | Los almuerzos</title>
   </head>
   <body>
   
