@@ -34,6 +34,11 @@ class logincontroller extends Controller {
     // Fecha: Noviembre 27, 2024
     // Descripción: Función que valida las credenciales de acceso de sesiones. -->
     public function validar(Request $request) { 
+        $validated = $request->validate([
+            'nombre_usuario' => 'required',
+            'contrasena' => 'required'
+        ]);
+
         $nombre_usuario = $request->nombre_usuario;
         $contrasena = $request->contrasena;
         
@@ -58,8 +63,7 @@ class logincontroller extends Controller {
             Session::flash('mensaje', "No se encontró el usuario con el estado 'Activo'");
             return redirect()->route('login');
         }
-
-       
+        // return $request;
     }
 
     // <!-- Autor: Jose Bladimir Cielo Cuautle

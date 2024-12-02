@@ -36,6 +36,9 @@ class landingpagecontroller extends controller {
             ->with('platillos',$platillos);
     }
 
+    // <!-- Autor: Jose Bladimir Cielo Cuautle
+    // Fecha: Noviembre 27, 2024
+    // Descripción: Función que permite la inserción de los datos del pedido realizado en línea para pedidos de tipo domicilio.
     public function registrarPedido(Request $request)
     {
         // Validar los datos del formulario
@@ -54,7 +57,7 @@ class landingpagecontroller extends controller {
             "INSERT INTO ventas (id_empleado, id_metpag, fecha_venta, total_venta, tipo, nombre_cliente, direccion_envio, costo_envio, hora_salida, estado)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [
-                7, // id_empleado
+                null, // id_empleado
                 1, // id_metpag
                 date('Y-m-d'), // fecha_venta (fecha actual en formato DATE)
                 $total, // total_venta
