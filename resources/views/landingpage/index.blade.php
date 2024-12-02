@@ -48,10 +48,10 @@
                     <a class="nav-link" href="#home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Galería</a>
+                    <a class="nav-link" href="#about">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#book-table">Contáctanos</a>
+                    <a class="nav-link" href="#gallary">Galería</a>
                 </li>
             </ul>
             <a class="navbar-brand m-auto" href="#">
@@ -60,13 +60,13 @@
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a href="#ordenar" class="btn btn-primary ml-xl-4 reservar">Ordenar</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#blog">Ubicación</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">Sobre nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#reservar" class="btn btn-primary ml-xl-4 reservar">Ordenar</a>
+                    <a class="nav-link" href="#book-table">Contáctanos</a>
                 </li>
             </ul>
         </div>
@@ -76,7 +76,7 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">Desde 1931</h1>
             <p class="display-4 mb-5">Para ti que buscas las experiencias más exclusivas en el tema de gastronomía gourmet, te traemos el más nuevo de nuestros restaurantes tradicionales.</p>
-            <a class="btn btn-lg btn-primary" href="#reservar">Ordenar a domicilio</a> <br>
+            <a class="btn btn-lg btn-primary" href="#ordenar">Ordenar a domicilio</a> <br>
             <a class="btn btn-lg btn-primary" href="#">Quiero reservar</a>
         </div>
     </header>
@@ -118,7 +118,7 @@
 
     
 
-    <div class="cont-reservar text-center bg-dark text-light has-height-md middle-items wow fadeIn" id="reservar">
+    <div class="cont-reservar text-center bg-dark text-light has-height-md middle-items wow fadeIn" id="ordenar">
         <h2 class="section-title">Pedido en línea</h2>
         <!-- <div class="main-content"> -->
             <section class="menu">

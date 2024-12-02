@@ -55,14 +55,14 @@ class landingpagecontroller extends controller {
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [
                 7, // id_empleado
-                null, // id_metpag
+                1, // id_metpag
                 date('Y-m-d'), // fecha_venta (fecha actual en formato DATE)
                 $total, // total_venta
                 'Domicilio', // tipo
                 $nombre_cliente, // nombre_cliente
                 $direccion, // direccion_envio
-                null, // costo_envio
-                null, // hora_salida
+                0.00, // costo_envio
+                '00:00:00', // hora_salida
                 'Pendiente', // estado
             ]
         );

@@ -68,7 +68,7 @@
             <input type="hidden" name="id_venta" value="{{ $infoPedido->id_venta }}">
 
             <div class="titulo">
-                <h1>Entregar pedido</h1>
+                <h1>Modificar pedido</h1>
             </div>
             <div class="message">
             @if (Session::has('mensaje'))
@@ -90,37 +90,45 @@
                     </td>
                     <td>
                         <label for="">Nombre del cliente</label>
-
                     </td>
                 </tr>
                     <td>
                         <input type="text" readonly value="{{ $infoPedido->id_venta }}">
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         <input type="text" name="fecha_venta" readonly value="{{ $infoPedido->fecha_venta }}">
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         <input type="text" name="nombre_cliente" readonly value="{{ $infoPedido->nombre_cliente }}">
                     </td>
                 <tr>
                 </tr>
                 <tr>
                     <td>
+                        <label for="">Costo de envío</label>
+                    </td>
+                    <td>
                         <label for="">Hora de salida</label>
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         <label for="">Estado del pedido</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="hora_salida" placeholder="HH:MM:SS">
+                        <input type="text" name="costo_envio" placeholder="00.00" value="{{ $infoPedido->costo_envio }}">
+                        @if($errors->first('costo_envio'))
+                            <p class="text-warning">{{ $errors->first('costo_envio') }}</p>
+                        @endif
+                    </td>
+                    <td>
+                        <input type="text" name="hora_salida" placeholder="00:00:00" value="{{ $infoPedido->hora_salida }}">
                         @if($errors->first('hora_salida'))
                             <p class="text-warning">{{ $errors->first('hora_salida') }}</p>
                         @endif
-                        </td>
-                        <td>
-                        <input type="text" name="estado" placeholder="Enviado/Completado /Cancelado">
+                    </td>
+                    <td>
+                        <input type="text" name="estado" placeholder="Enviado/Completado/Cancelado" value="{{ $infoPedido->estado }}">
                         @if($errors->first('estado'))
                             <p class="text-warning">{{ $errors->first('estado') }}</p>
                         @endif

@@ -19,7 +19,7 @@ Route::POST('crearapartado',[panelcontroller::class,'crearapartado'])->name('cre
 // REGISTRAR Y RASTREAR PEDIDOS A DOMICILIO
 Route::get('consultar',[pedidoscontroller::class,'consultar'])->name('consultar'); 
 Route::get('entregar',[pedidoscontroller::class,'entregar'])->name('entregar'); 
-Route::get('entregaPedido/{id_venta}',[pedidoscontroller::class,'entregaPedido'])->name('entregaPedido');
+Route::get('completarPedido/{id_venta}',[pedidoscontroller::class,'completarPedido'])->name('completarPedido');
 Route::POST('guardarPedido', [pedidoscontroller::class, 'guardarPedido'])->name('guardarPedido');
 // LANDING PAGE
 Route::get('landing',[landingpagecontroller::class,'landing'])->name('landing');

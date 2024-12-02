@@ -65,13 +65,13 @@ class pedidoscontroller extends controller {
     // <!-- Autor: Jose Bladimir Cielo Cuautle
     // Fecha: Noviembre 27, 2024
     // Descripción:Función que extrae los datos del pedido a modificar desde la base de datos  -->
-    public function entregaPedido($id_venta) {
+    public function completarPedido($id_venta) {
         // Consulta la venta especificada por idventa
-        $infoPedido = \DB::select("SELECT id_venta, fecha_venta, nombre_cliente, hora_salida, estado
+        $infoPedido = \DB::select("SELECT id_venta, fecha_venta, nombre_cliente, costo_envio, hora_salida, estado
             FROM ventas
             WHERE id_venta = $id_venta");
         
-        return view('administracion.entregapedido')
+        return view('administracion.completarpedido')
         ->with('infoPedido', $infoPedido[0]);
     }
 
@@ -82,18 +82,23 @@ class pedidoscontroller extends controller {
     public function guardarPedido(Request $request) {
         // Validación de los datos del formulario
         $validated = $request->validate([
+            'costo_envio' => [
+                'required',
+                'numeric', 
+            ],
             'hora_salida' => [
                 'required',
                 'regex:/^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/',  // HH:MM:SS
             ],
             'estado' => [
                 'required',
-                'regex:/^(Enviado|Completado|Cancelado)$/',  // Solo "Completado" o "Cancelado"
+                'regex:/^(Enviado|Completado|Cancelado)$/', 
             ],
         ]);
 
         // Obtén los datos del formulario
         $id_venta = $request->input('id_venta');
+        $costo_envio = $request->input('costo_envio');
         $hora_salida = $request->input('hora_salida');
         $estado = $request->input('estado');
 
@@ -101,11 +106,11 @@ class pedidoscontroller extends controller {
         $venta = \DB::table('ventas')
             ->where('id_venta', $id_venta)
             ->update([
+                'costo_envio' => $costo_envio,
                 'hora_salida' => $hora_salida,
                 'estado' => $estado,
             ]);
 
-        Session::flash('mensaje', "El pedido $request->id_venta se ha guardado correctamente.");
         return redirect()->route('entregar');
     }
 }
